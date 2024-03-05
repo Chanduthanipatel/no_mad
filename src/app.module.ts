@@ -1,11 +1,11 @@
-import { MiddlewareConsumer, Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { CommonModule } from "./common/common.module";
-import { ConfigModule } from "@nestjs/config";
-import { JwtService } from "@nestjs/jwt";
+import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { CommonModule } from './common/common.module';
+import { ConfigModule } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 
-import { HttpModule } from "@nestjs/axios";
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -16,22 +16,14 @@ import { HttpModule } from "@nestjs/axios";
     HttpModule,
     ConfigModule.forRoot(),
   ],
-  controllers: [
-    AppController
-  ],
-  providers: [
-    AppService,
-    JwtService,
-  ],
+  controllers: [AppController],
+  providers: [AppService, JwtService],
 })
 export class AppModule {
-
   configure(consumer: MiddlewareConsumer) {
     // Uncomment when JWT token need to be authenticated
     // consumer.apply(JwtAuthService).forRoutes("*");
-
-    // Uncomment when date formatter required 
+    // Uncomment when date formatter required
     // consumer.apply(DatePayloadFormatter).forRoutes("*");
-
   }
 }
