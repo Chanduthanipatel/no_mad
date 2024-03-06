@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 
 import { HttpModule } from '@nestjs/axios';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { HttpModule } from '@nestjs/axios';
     }),
     CommonModule,
     HttpModule,
+    AuthenticationModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
